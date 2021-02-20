@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float Ax, Ay, Bx, By, Cx, Cy, Px, Py, bx, by, cx, cy, x, y, d, WA, WB, WC;
+    int veri, sorgu=0;
+
+
+    hata1:
+        printf("Ucgenin ilk noktasinin x degerini giriniz: ");
+        scanf("%f",&Ax);
+        printf("Ucgenin ilk noktasinin y degerini giriniz: ");
+        scanf("%f",&Ay);
+
+        printf("Ucgenin ikinci noktasinin x degerini giriniz: ");
+        scanf("%f",&Bx);
+        printf("Ucgenin ikinci noktasinin y degerini giriniz: ");
+        scanf("%f",&By);
+
+        printf("Ucgenin ucuncu noktasinin x degerini giriniz: ");
+        scanf("%f",&Cx);
+        printf("Ucgenin ucuncu noktasinin y degerini giriniz: ");
+        scanf("%f",&Cy);
+
+        if (Ax==Bx&&Ax==Cx) {
+
+printf("\n\n!!!Dikkat ayni dogru uzerinde bulunan 3 nokta ucgen belirtemez! Ucgeninizin koordinat degerlerini tekrar giriniz: \n\n");
+goto hata1;
+}
+else if (Ay==By&&Ay==Cy) {
+
+printf("\n\n!!!Dikkat ayni dogru uzerinde bulunan 3 nokta ucgen belirtemez! Ucgeninizin koordinat degerlerini tekrar giriniz: \n\n");
+goto hata1;
+}
+
+
+        printf("Istediginiz noktanin x degerini giriniz: ");
+        scanf("%f",&Px);
+        printf("Istediginiz noktanin y degerini giriniz: ");
+        scanf("%f",&Py);
+
+        bx=Bx-Ax;
+        by=By-Ay;
+        cx=Cx-Ax;
+        cy=Cy-Ay;
+        x=Px-Ax;
+        y=Py-Ay;
+
+        d=(bx*cy)-(cx*by);
+        WA=(x*(by-cy)+y*(cx-bx)+bx*cy-cx*by)/d;
+        WB=(x*cy-y*cx)/d;
+        WC=(y*bx-x*by)/d;
+
+
+        if(WA>=0 && WA<=1 && WB>=0 && WB<=1 && WC>=0 && WC<=1)
+        {
+            printf("Sectiginiz nokta ucgenin icindedir. TEBRIKLER...");
+        }
+        else{
+            printf("Sectiginiz nokta ucgenin icinde degildir. TEKRAR DENEYINIZ...");
+        }
+
+hata2:
+
+        printf("\n\nTekrar denemek istiyorsaniz 1 e basiniz. Denemek istemiyorsaniz 2 ye basiniz:");
+        scanf("%d" ,&veri);
+
+        if(veri==1)
+            goto hata1;
+        else if(veri==2)
+         system("exit");
+        else{
+         printf("\n\nnYanlış sayi girdiniz");
+        goto hata2;
+        }
+
+
+
+ /*
+
+        if(WA>=0 && WA<=1)
+        {
+
+          sorgu=1;
+        }
+        else if(WB>=0 && WB<=1)
+        {
+           sorgu++;
+        }
+        else if(WC>=0 && WC<=1)
+        {
+           sorgu++;
+        }
+        else if(sorgu==3)
+        {
+            printf("icinde");
+        }
+        else{
+            printf("degildir");
+        } */
+
+           return 0;
+}
